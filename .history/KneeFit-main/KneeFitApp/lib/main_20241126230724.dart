@@ -235,10 +235,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-
                   // Track Live Data button
-                ElevatedButton.icon(
+                  ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -258,7 +256,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Exercise.dart';
-import 'Health.dart';
-import 'Profile.dart';
-import 'Notifications.dart';
-import 'LiveData.dart'; 
-
+import 'BlueTooth.dart';
+importn ''
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KneeFit',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 33, 124, 243)), // banner
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), // Change the seed color to blue
         useMaterial3: true,
       ),
       home: const SplashScreen(),
@@ -57,7 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-//home screen function
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -67,73 +63,8 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('KneeFit Home'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary, // AppBar follows the blue theme
-        actions: [
-
-          //search bar
-          IconButton(
-      icon: const Icon(Icons.search),
-      tooltip: 'Search',
-      onPressed: () {
-        showSearch(
-          context: context,
-          delegate: CustomSearchDelegate(),
-        );
-      },
-    ),
-
-          //notification button
-          Stack(
-    children: [
-      IconButton(
-        icon: const Icon(Icons.notifications),
-        tooltip: 'Notifications',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const NotificationsPage()),
-          );
-        },
-      ),
-      Positioned(
-        right: 8,
-        top: 8,
-        child: Container(
-          padding: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          constraints: const BoxConstraints(
-            minWidth: 8,
-            minHeight: 8,
-          ),
-          child: const Text(
-            '3', // Example unread count
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    ],
-  ),
-
-          //profile button
-            IconButton(
-              icon: const Icon(Icons.account_circle),
-              tooltip: 'Profile',
-              onPressed: () {
-              // Navigate to Profile Page
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ProfilePage()),
-                );
-              },
-            ),
-            const LogoWidget(), // Add the logo to the top-right using AppBar actions
+        actions: const [
+          LogoWidget(), // Add the logo to the top-right using AppBar actions
         ],
       ),
       body: Stack(
@@ -153,7 +84,6 @@ class HomeScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Welcome text
                   const Text(
@@ -166,7 +96,6 @@ class HomeScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
-
                   // Connect to Brace button
                   ElevatedButton.icon(
                     onPressed: () {
@@ -190,14 +119,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-
                   // Exercises button
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ExercisePage()),
+                            builder: (context) => const ExercisesScreen()),
                       );
                     },
                     icon: const Icon(Icons.fitness_center),
@@ -213,32 +141,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  // Health button
-                ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HealthStatisticsPage()),
-                      );
-                    },
-                    icon: const Icon(Icons.favorite),
-                    label: const Text('Health'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 123, 242, 202), // Blue theme for button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
                   // Track Live Data button
-                ElevatedButton.icon(
+                  ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -258,7 +162,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -269,7 +172,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-//brace screen function (static right now)
 class ConnectToBraceScreen extends StatelessWidget {
   const ConnectToBraceScreen({super.key});
 
@@ -290,7 +192,6 @@ class ConnectToBraceScreen extends StatelessWidget {
   }
 }
 
-//qbit logo
 class LogoWidget extends StatelessWidget {
   const LogoWidget({super.key});
 
@@ -306,51 +207,3 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
-
- //search bar function
-class CustomSearchDelegate extends SearchDelegate {
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: const Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
-      ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Center(
-      child: Text('Search result for "$query"'),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('Suggestion $index'),
-          onTap: () {
-            query = 'Suggestion $index';
-          },
-        );
-      },
-    );
-  }
-}
-

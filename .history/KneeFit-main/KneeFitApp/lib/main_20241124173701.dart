@@ -3,7 +3,6 @@ import 'Exercise.dart';
 import 'Health.dart';
 import 'Profile.dart';
 import 'Notifications.dart';
-import 'LiveData.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -153,7 +152,6 @@ class HomeScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Welcome text
                   const Text(
@@ -235,30 +233,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-
-                  // Track Live Data button
-                ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LiveDataScreen()),
-                      );
-                    },
-                    icon: const Icon(Icons.data_usage),
-                    label: const Text('Track Live Data'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.blueGrey, // Theme for the new button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

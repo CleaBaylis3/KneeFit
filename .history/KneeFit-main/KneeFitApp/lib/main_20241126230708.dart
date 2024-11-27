@@ -148,13 +148,126 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           // Page content with a little transparency to make it stand out on the background
-          Container(
+          // Container(
+          //   color: Colors.black.withOpacity(0.5),
+          //   child: Center(
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         // Welcome text
+          //         const Text(
+          //           'Welcome to KneeFit',
+          //           style: TextStyle(
+          //             color: Colors.white,
+          //             fontSize: 32,
+          //             fontWeight: FontWeight.bold,
+          //           ),
+          //           textAlign: TextAlign.center,
+          //         ),
+          //         const SizedBox(height: 40),
+
+          //         // Connect to Brace button
+          //         ElevatedButton.icon(
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) =>
+          //                       const ConnectToBraceScreen()),
+          //             );
+          //           },
+          //           icon: const Icon(Icons.link),
+          //           label: const Text('Connect to Brace'),
+          //           style: ElevatedButton.styleFrom(
+          //             padding: const EdgeInsets.symmetric(
+          //                 horizontal: 30, vertical: 15),
+          //             textStyle: const TextStyle(fontSize: 20),
+          //             backgroundColor: Colors.blueAccent, // Blue theme for button
+          //             shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(20),
+          //             ),
+          //           ),
+          //         ),
+          //         const SizedBox(height: 20),
+
+          //         // Exercises button
+          //         ElevatedButton.icon(
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => const ExercisePage()),
+          //             );
+          //           },
+          //           icon: const Icon(Icons.fitness_center),
+          //           label: const Text('Exercises'),
+          //           style: ElevatedButton.styleFrom(
+          //             padding: const EdgeInsets.symmetric(
+          //                 horizontal: 30, vertical: 15),
+          //             textStyle: const TextStyle(fontSize: 20),
+          //             backgroundColor: Colors.lightBlueAccent, // Blue theme for button
+          //             shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(20),
+          //             ),
+          //           ),
+          //         ),
+          //         const SizedBox(height: 20),
+
+          //         // Health button
+          //       ElevatedButton.icon(
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => const HealthStatisticsPage()),
+          //             );
+          //           },
+          //           icon: const Icon(Icons.favorite),
+          //           label: const Text('Health'),
+          //           style: ElevatedButton.styleFrom(
+          //             padding: const EdgeInsets.symmetric(
+          //                 horizontal: 30, vertical: 15),
+          //             textStyle: const TextStyle(fontSize: 20),
+          //             backgroundColor: const Color.fromARGB(255, 123, 242, 202), // Blue theme for button
+          //             shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(20),
+          //             ),
+          //           ),
+          //         ),
+          //         // Track Live Data button
+          //         ElevatedButton.icon(
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => const LiveDataScreen()),
+          //             );
+          //           },
+          //           icon: const Icon(Icons.data_usage),
+          //           label: const Text('Track Live Data'),
+          //           style: ElevatedButton.styleFrom(
+          //             padding: const EdgeInsets.symmetric(
+          //                 horizontal: 30, vertical: 15),
+          //             textStyle: const TextStyle(fontSize: 20),
+          //             backgroundColor: Colors.blueGrey, // Theme for the new button
+          //             shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(20),
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+                    Container(
             color: Colors.black.withOpacity(0.5),
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start, // Align content to the top
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Add spacing at the top for aesthetics
+                  const SizedBox(height: 40),
+
                   // Welcome text
                   const Text(
                     'Welcome to KneeFit',
@@ -165,57 +278,59 @@ class HomeScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
+
+                  // Add spacing between text and buttons
                   const SizedBox(height: 40),
 
-                  // Connect to Brace button
+                  // First button: Connect to Brace
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const ConnectToBraceScreen()),
+                            builder: (context) => const ConnectToBraceScreen()),
                       );
                     },
                     icon: const Icon(Icons.link),
                     label: const Text('Connect to Brace'),
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.blueAccent, // Blue theme for button
+                      backgroundColor: Colors.blueAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
+
+                  // Fixed spacing between buttons
                   const SizedBox(height: 20),
 
-                  // Exercises button
+                  // Second button: Exercises
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const ExercisePage()),
+                        MaterialPageRoute(builder: (context) => const ExercisePage()),
                       );
                     },
                     icon: const Icon(Icons.fitness_center),
                     label: const Text('Exercises'),
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.lightBlueAccent, // Blue theme for button
+                      backgroundColor: Colors.lightBlueAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
+
+                  // Fixed spacing between buttons
                   const SizedBox(height: 20),
 
-                  // Health button
-                ElevatedButton.icon(
+                  // Third button: Health
+                  ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -226,41 +341,45 @@ class HomeScreen extends StatelessWidget {
                     icon: const Icon(Icons.favorite),
                     label: const Text('Health'),
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 123, 242, 202), // Blue theme for button
+                      backgroundColor: const Color.fromARGB(255, 123, 242, 202),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
+
+                  // Fixed spacing between buttons
                   const SizedBox(height: 20),
 
-                  // Track Live Data button
-                ElevatedButton.icon(
+                  // Fourth button: Track Live Data
+                  ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const LiveDataScreen()),
+                        MaterialPageRoute(builder: (context) => const LiveDataScreen()),
                       );
                     },
                     icon: const Icon(Icons.data_usage),
                     label: const Text('Track Live Data'),
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.blueGrey, // Theme for the new button
+                      backgroundColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+
+                  // Add spacing at the bottom to prevent buttons from touching the edge
+                  const SizedBox(height: 40),
                 ],
               ),
+            ),
+          ),
+
             ),
           ),
         ],

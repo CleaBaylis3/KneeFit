@@ -153,7 +153,6 @@ class HomeScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Welcome text
                   const Text(
@@ -235,10 +234,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-
                   // Track Live Data button
-                ElevatedButton.icon(
+                  ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -257,8 +254,6 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),
