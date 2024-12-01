@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KneeFit',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), // Change the seed color to blue
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue), // Change the seed color to blue
         useMaterial3: true,
       ),
       home: const SplashScreen(),
@@ -62,7 +63,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('KneeFit Home'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary, // AppBar follows the blue theme
+        backgroundColor: Theme.of(context)
+            .colorScheme
+            .inversePrimary, // AppBar follows the blue theme
         actions: const [
           LogoWidget(), // Add the logo to the top-right using AppBar actions
         ],
@@ -73,7 +76,8 @@ class HomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/background.jpeg'), // Add your image here
+                image:
+                    AssetImage('assets/background.jpeg'), // Add your image here
                 fit: BoxFit.cover,
               ),
             ),
@@ -102,8 +106,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const ConnectToBraceScreen()),
+                            builder: (context) => const ConnectToBraceScreen()),
                       );
                     },
                     icon: const Icon(Icons.link),
@@ -112,7 +115,8 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.blueAccent, // Blue theme for button
+                      backgroundColor:
+                          Colors.blueAccent, // Blue theme for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -134,7 +138,8 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: Colors.lightBlueAccent, // Blue theme for button
+                      backgroundColor:
+                          Colors.lightBlueAccent, // Blue theme for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -167,26 +172,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ConnectToBraceScreen extends StatelessWidget {
-  const ConnectToBraceScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Connect to Brace'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: const Center(
-        child: Text(
-          'This is the Connect to Brace screen.',
-          style: TextStyle(fontSize: 24),
-        ),
       ),
     );
   }
