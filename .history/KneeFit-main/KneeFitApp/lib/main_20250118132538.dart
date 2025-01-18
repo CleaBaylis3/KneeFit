@@ -276,7 +276,7 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 114, 186),
+                      backgroundColor: const Color.fromARGB(255, 39, 108, 141),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

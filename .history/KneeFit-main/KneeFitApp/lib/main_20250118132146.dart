@@ -270,13 +270,13 @@ class HomeScreen extends StatelessWidget {
                             builder: (context) => const RehabilitationScreen()),
                       );
                     },
-                    icon: const Icon(Icons.fitness_center),
+                    icon: const Icon(Icons.favorite),
                     label: const Text('Rehabilitation'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 114, 186),
+                      backgroundColor: const Color.fromARGB(255, 123, 242, 202), // Blue theme for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

@@ -4,7 +4,7 @@ import 'Health.dart';
 import 'Profile.dart';
 import 'Notifications.dart';
 import 'LiveData.dart'; 
-import 'Rehabilitation.dart';
+import 'Rehabiliation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -202,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     icon: const Icon(Icons.fitness_center),
-                    label: const Text('ExercisePage'),
+                    label: const Text('Exercises'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
@@ -254,29 +254,6 @@ class HomeScreen extends StatelessWidget {
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
                       backgroundColor: Colors.blueGrey, // Theme for the new button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Rehabilitation button
-                ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RehabilitationScreen()),
-                      );
-                    },
-                    icon: const Icon(Icons.fitness_center),
-                    label: const Text('Rehabilitation'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 114, 186),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

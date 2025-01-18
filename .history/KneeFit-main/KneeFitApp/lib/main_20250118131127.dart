@@ -202,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     icon: const Icon(Icons.fitness_center),
-                    label: const Text('ExercisePage'),
+                    label: const Text('Rehabiliation'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
@@ -260,23 +260,22 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  // Rehabilitation button
+// Track Live Data button
                 ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RehabilitationScreen()),
+                            builder: (context) => const HealthStatisticsPage()),
                       );
                     },
-                    icon: const Icon(Icons.fitness_center),
-                    label: const Text('Rehabilitation'),
+                    icon: const Icon(Icons.favorite),
+                    label: const Text('Health'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 114, 186),
+                      backgroundColor: const Color.fromARGB(255, 123, 242, 202), // Blue theme for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
