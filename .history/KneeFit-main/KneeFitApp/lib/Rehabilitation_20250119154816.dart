@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class RehabilitationScreen extends StatelessWidget {
   const RehabilitationScreen({super.key});
-  
   @override
     Widget build(BuildContext context) {
       return Scaffold(

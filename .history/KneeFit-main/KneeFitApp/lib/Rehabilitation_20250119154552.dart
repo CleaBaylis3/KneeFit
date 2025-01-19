@@ -2,45 +2,44 @@ import 'package:flutter/material.dart';
 
 class RehabilitationScreen extends StatelessWidget {
   const RehabilitationScreen({super.key});
-  
-  @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Knee Rehabilitation Program'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.info_outline),
-              tooltip: 'Program Information',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProgramInfoScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-        body: ListView.builder(
-          itemCount: phases.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(phases[index], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ExerciseScreen(phase: phases[index]),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      );
-    }
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Knee Rehabilitation Program'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'Program Information',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProgramInfoScreen()),
+              );
+            },
+          ),
+        ],
+      ),
+      body: ListView.builder(
+        itemCount: phases.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(phases[index], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ExerciseScreen(phase: phases[index]),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
+}
 
 class ProgramInfoScreen extends StatelessWidget {
   const ProgramInfoScreen({super.key});
