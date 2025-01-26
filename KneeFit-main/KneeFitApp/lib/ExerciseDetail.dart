@@ -1,80 +1,58 @@
 import 'package:flutter/material.dart';
 import 'Exercise.dart';
 
-class ExerciseDetailPage extends StatefulWidget {
+class ExerciseDetailPage extends StatelessWidget {
   final Exercise exercise;
-  final Function(bool) onFavoriteToggle;
+  final ValueChanged<bool> onFavoriteToggle;
   final VoidCallback onAddToTracker;
 
   const ExerciseDetailPage({
-    super.key,
+    Key? key,
     required this.exercise,
     required this.onFavoriteToggle,
     required this.onAddToTracker,
-  });
-
-  @override
-  State<ExerciseDetailPage> createState() => _ExerciseDetailPageState();
-}
-
-class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
-  bool isFavorited = false;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.exercise.name),
+        title: Text(exercise.name),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+            // Image Section
+            SizedBox(
+              height: 200, // Set the container height to be smaller
+              width: double.infinity, // Full width
               child: Image.asset(
-                widget.exercise.imagePath,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 200,
+                exercise.imagePath,
+                fit: BoxFit.contain, // Fit the entire image inside the container without cropping
               ),
             ),
-            const SizedBox(height: 16),
-            Text(
-              widget.exercise.name,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            // Description Section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                exercise.description,
+                style: const TextStyle(fontSize: 16),
+              ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              widget.exercise.description,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-
-            // Favorite Button
+            // Actions Section
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  icon: Icon(
-                    isFavorited ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorited ? Colors.red : Colors.grey,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isFavorited = !isFavorited;
-                    });
-                    widget.onFavoriteToggle(isFavorited);
-                  },
+                  icon: const Icon(Icons.favorite),
+                  onPressed: () => onFavoriteToggle(true),
                 ),
-                const Text('Favorite'),
+                ElevatedButton(
+                  onPressed: onAddToTracker,
+                  child: const Text('Add to Tracker'),
+                ),
               ],
-            ),
-
-            // Add to Tracker Button
-            ElevatedButton(
-              onPressed: widget.onAddToTracker,
-              child: const Text('Add to Tracker'),
             ),
           ],
         ),

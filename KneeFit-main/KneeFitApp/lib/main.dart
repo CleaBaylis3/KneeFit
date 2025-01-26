@@ -6,6 +6,8 @@ import 'Profile.dart';
 import 'Notifications.dart';
 import 'LiveData.dart';
 import 'Rehabilitation.dart';
+import 'CalendarPage.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -285,6 +287,29 @@ class HomeScreen extends StatelessWidget {
                           horizontal: 30, vertical: 15),
                       textStyle: const TextStyle(fontSize: 20),
                       backgroundColor: const Color.fromARGB(255, 62, 114, 186),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Rehabilitation button
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CalendarPage()),
+                      );
+                    },
+                    icon: const Icon(Icons.calendar_today),
+                    label: const Text('Calendar'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 20),
+                      backgroundColor: const Color.fromARGB(255, 62, 149, 186),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

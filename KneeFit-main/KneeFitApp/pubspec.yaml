@@ -38,6 +38,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  #calendar package
+  table_calendar: ^3.0.8
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,14 +67,14 @@ flutter:
   assets:
     - assets/background.jpeg
     - assets/QbitLogo.jpeg
-    - assets/images/calfraises.jpg
-    - assets/images/halfsquats.jpg
-    - assets/images/hamstringcurls.jpg
-    - assets/images/heelcord.jpg
-    - assets/images/hipabduction.jpg
-    - assets/images/quadriceps.jpg
-    - assets/images/supinehamstring.jpg
-    - assets/images/emptyprofilepicture.png
+    - assets/calfraises.jpg
+    - assets/halfsquats.jpg
+    - assets/hamstringcurls.jpg
+    - assets/heelcord.jpg
+    - assets/hipabduction.jpg
+    - assets/quadriceps.jpg
+    - assets/supinehamstring.jpg
+    - assets/emptyprofilepicture.png
 
   #  - images/background.jpeg
   # - images/a_dot_burr.jpeg

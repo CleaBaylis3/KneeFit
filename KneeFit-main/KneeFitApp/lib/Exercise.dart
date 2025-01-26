@@ -12,14 +12,29 @@ class _ExercisePageState extends State<ExercisePage> {
   // List of exercises
   final List<Exercise> exercises = [
     Exercise(
+      name: 'Hip Abduction',
+      imagePath: 'assets/hipabduction.jpg',
+      description: ' ',
+    ),
+    Exercise(
+      name: 'Calf Raises',
+      imagePath: 'assets/calfraises.jpg',
+      description: ' ',
+    ),
+    Exercise(
+      name: 'Supine Hamstring',
+      imagePath: 'assets/supinehamstring.jpg',
+      description: ' ',
+    ),
+    Exercise(
       name: 'Heel Cord Stretch',
       imagePath: 'assets/heelcord.jpg',
       description:'Press both feet flat into the floor and press hips forward toward the wall and hold position.\n\nMuscles worked: Posterior calf muscles (gastrocnemius and soleus).\nIntensity: Low - adjustable with amount of force applied into stretch\nRepetitions: 4 sets of 30s stretch hold\nFrequency: 5-7 days/week',
     ),
     Exercise(
       name: 'Standing Quadriceps Stretch',
-      imagePath: 'assets/heelcord.jpg',
-      description:'',
+      imagePath: 'assets/quadriceps.jpg',
+      description:' ',
     ),
     Exercise(
       name: 'Half Squats',
@@ -27,9 +42,9 @@ class _ExercisePageState extends State<ExercisePage> {
       description: 'Build lower body strength and stability.',
     ),
     Exercise(
-      name: 'Plank',
+      name: 'Ham String Curls',
       imagePath: 'assets/hamstringcurls.jpg',
-      description: 'Strengthen your core muscles effectively.',
+      description: ' ',
     ),
   ];
 
