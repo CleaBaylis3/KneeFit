@@ -64,7 +64,8 @@ class _CalendarPageState extends State<CalendarPage> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    _focusedDay = DateTime.now().add(const Duration(days: 7)); // Next week
+                    _focusedDay = DateTime.now()
+                        .add(const Duration(days: 7)); // Next week
                     debugPrint('Next Week Button Clicked');
                     debugPrint('Focused Day: $_focusedDay');
                   });
@@ -76,11 +77,13 @@ class _CalendarPageState extends State<CalendarPage> {
           if (_selectedDay != null)
             ...(_progressData[_selectedDay!] ?? [])
                 .map((event) => ListTile(
-                      leading: const Icon(Icons.check_circle, color: Colors.green),
+                      leading:
+                          const Icon(Icons.check_circle, color: Colors.green),
                       title: Text(event),
                     ))
                 .toList(),
-          if (_selectedDay != null && (_progressData[_selectedDay!] ?? []).isEmpty)
+          if (_selectedDay != null &&
+              (_progressData[_selectedDay!] ?? []).isEmpty)
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
