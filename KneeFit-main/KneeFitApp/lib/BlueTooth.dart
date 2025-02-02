@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_blue_plus/flutter_blue_plus.dart'; // Make sure to import FlutterBluePlus
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'BleController.dart';
 
 class ConnectToBraceScreen extends StatelessWidget {

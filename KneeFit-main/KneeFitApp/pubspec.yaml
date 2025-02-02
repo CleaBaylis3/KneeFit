@@ -34,8 +34,6 @@ dependencies:
   # Bluetooth flutter package
   flutter_blue_plus: ^1.35.0
   get: ^4.6.6
-  flutter_bluetooth_serial: ^0.4.0
-  bluetooth_classic: ^0.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -43,7 +41,6 @@ dependencies:
 
   #calendar package
   table_calendar: ^3.0.8
-
 
 dev_dependencies:
   flutter_test:
