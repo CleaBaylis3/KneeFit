@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'BlueTooth.dart';
+import 'BlueTooth/BlueTooth.dart';
 import 'Exercise.dart';
 import 'Health.dart';
 import 'Profile.dart';
@@ -7,7 +7,6 @@ import 'Notifications.dart';
 import 'LiveData.dart';
 import 'Rehabilitation.dart';
 import 'CalendarPage.dart';
-
 
 void main() {
   runApp(const MyApp());
