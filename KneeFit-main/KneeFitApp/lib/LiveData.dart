@@ -7,8 +7,6 @@ class LiveDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Track Live Data'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end, // Aligns content to the bottom
@@ -24,3 +22,4 @@ class LiveDataScreen extends StatelessWidget {
     );
   }
 }
+

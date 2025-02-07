@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'Exercise.dart';
+import 'styles/text_styles.dart';
+import 'Rehabilitation.dart';
 
 class ExerciseDetailPage extends StatelessWidget {
   final Exercise exercise;
-  final ValueChanged<bool> onFavoriteToggle;
-  final VoidCallback onAddToTracker;
+  
 
   const ExerciseDetailPage({
     Key? key,
     required this.exercise,
-    required this.onFavoriteToggle,
-    required this.onAddToTracker,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(exercise.name),
+        titleTextStyle: TextStyles.subheading,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -37,22 +35,8 @@ class ExerciseDetailPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 exercise.description,
-                style: const TextStyle(fontSize: 16),
+                style: TextStyles.exercise,
               ),
-            ),
-            // Actions Section
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.favorite),
-                  onPressed: () => onFavoriteToggle(true),
-                ),
-                ElevatedButton(
-                  onPressed: onAddToTracker,
-                  child: const Text('Add to Tracker'),
-                ),
-              ],
             ),
           ],
         ),

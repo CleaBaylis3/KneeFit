@@ -42,7 +42,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
       ),
       body: notifications.isEmpty
           ? Center(

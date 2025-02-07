@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'styles/text_styles.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -13,17 +14,15 @@ class _CalendarPageState extends State<CalendarPage> {
   DateTime? _selectedDay;
 
   // Example progress data
-  final Map<DateTime, List<String>> _progressData = {
-    DateTime.utc(2025, 1, 22): ['Workout: Heel Cord Stretch'],
-    DateTime.utc(2025, 1, 23): ['Workout: Plank', 'Workout: Half Squats'],
-  };
+  final Map<DateTime, List<String>> _progressData = { };
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Progress Calendar'),
-      ),
+    return Container(
+      color: const Color.fromARGB(255, 255, 255, 255),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+      appBar: AppBar(),
       body: Column(
         children: [
           TableCalendar(
@@ -40,40 +39,27 @@ class _CalendarPageState extends State<CalendarPage> {
             eventLoader: (day) {
               return _progressData[day] ?? [];
             },
-            calendarStyle: const CalendarStyle(
+            calendarStyle: CalendarStyle(
               markerDecoration: BoxDecoration(
-                color: Colors.blue,
+                color: const Color.fromARGB(255, 255, 255, 255),
                 shape: BoxShape.circle,
               ),
+                todayTextStyle: TextStyles.calendardate, // Apply custom text style
+                defaultTextStyle: TextStyles.calendardate, // Default text style
+                selectedTextStyle: TextStyles.calendardate.copyWith(color: Colors.white), // Selected day styling
+                weekendTextStyle: TextStyles.calendardate.copyWith(color: Colors.red),
+                outsideTextStyle: TextStyles.calendarprevdate,
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to 2 weeks range
-                  setState(() {
-                    _focusedDay = DateTime.now(); // Keep focused day valid
-                    debugPrint('2 Weeks Button Clicked');
-                    debugPrint('Focused Day: $_focusedDay');
-                  });
-                },
-                child: const Text('2 Weeks'),
+            daysOfWeekStyle: DaysOfWeekStyle(
+                weekdayStyle: TextStyles.calendartitle,
+                weekendStyle: TextStyles.calendartitle.copyWith(color: Colors.red),
+            ),
+            headerStyle: HeaderStyle(
+                formatButtonVisible: false, 
+                titleTextStyle: TextStyles.calendardate,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _focusedDay = DateTime.now()
-                        .add(const Duration(days: 7)); // Next week
-                    debugPrint('Next Week Button Clicked');
-                    debugPrint('Focused Day: $_focusedDay');
-                  });
-                },
-                child: const Text('Next Week'),
-              ),
-            ],
           ),
+          
           if (_selectedDay != null)
             ...(_progressData[_selectedDay!] ?? [])
                 .map((event) => ListTile(
@@ -88,11 +74,12 @@ class _CalendarPageState extends State<CalendarPage> {
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'No progress recorded on this day.',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyles.calendartitle,
               ),
             ),
         ],
       ),
+    ),
     );
   }
 }

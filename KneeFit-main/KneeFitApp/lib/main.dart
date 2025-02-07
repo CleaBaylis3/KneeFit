@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'styles/text_styles.dart';
+
 import 'BlueTooth.dart';
-import 'Exercise.dart';
-import 'Health.dart';
 import 'Profile.dart';
 import 'Notifications.dart';
 import 'LiveData.dart';
 import 'Rehabilitation.dart';
 import 'CalendarPage.dart';
-
+import 'ProgramInfoScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +21,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KneeFit',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 33, 124, 243)), // banner
-        useMaterial3: true,
+          appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.black),
+          titleTextStyle: TextStyles.title,
+          ),
+        //useMaterial3: true,
       ),
       home: const SplashScreen(),
     );
@@ -55,278 +59,222 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           'KneeFit',
-          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
     );
   }
 }
 
-//home screen function
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  // List of pages for navigation
+  final List<Widget> _pages = [
+    const HomeScreenContent(),        // Home Page (Index 0)
+    const RehabilitationScreen(),     // Rehabilitation/Exercises Page (Index 1)
+    const ProfilePage(),              // Profile Page (Index 2)
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('KneeFit Home'),
-        backgroundColor: Theme.of(context)
-            .colorScheme
-            .inversePrimary, // AppBar follows the blue theme
-        actions: [
-          //search bar
-          IconButton(
-            icon: const Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: CustomSearchDelegate(),
-              );
-            },
-          ),
-
-          //notification button
-          Stack(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.notifications),
-                tooltip: 'Notifications',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NotificationsPage()),
-                  );
-                },
-              ),
-              Positioned(
-                right: 8,
-                top: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  constraints: const BoxConstraints(
-                    minWidth: 8,
-                    minHeight: 8,
-                  ),
-                  child: const Text(
-                    '3', // Example unread count
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+        backgroundColor: _selectedIndex == 1 ? Colors.white : const Color.fromARGB(255, 255, 255, 255),
+        elevation: 0,
+        centerTitle: true,
+        actions: _selectedIndex == 1
+            ? [ 
+                IconButton(
+                  icon: const Icon(Icons.info_outline, color: Colors.black),
+                  tooltip: 'Program Information',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProgramInfoScreen()),
+                    );
+                  },
                 ),
-              ),
-            ],
-          ),
-
-          //profile button
-          IconButton(
-            icon: const Icon(Icons.account_circle),
-            tooltip: 'Profile',
-            onPressed: () {
-              // Navigate to Profile Page
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProfilePage()),
-              );
-            },
-          ),
-          const LogoWidget(), // Add the logo to the top-right using AppBar actions
-        ],
+              ]
+            : [ 
+                Stack(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.notifications, color: Colors.white),
+                      tooltip: 'Notifications',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const NotificationsPage()),
+                        );
+                      },
+                    ),
+                    Positioned(
+                      right: 8,
+                      top: 8,
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 8,
+                          minHeight: 8,
+                        ),
+                        child: const Text(
+                          '3', // Example unread count
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
       ),
-      body: Stack(
-        children: [
-          // Background image
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image:
-                    AssetImage('assets/background.jpeg'), // Add your image here
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: _pages[_selectedIndex], 
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          // Page content with a little transparency to make it stand out on the background
-          Container(
-            color: Colors.black.withOpacity(0.5),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Welcome text
-                  const Text(
-                    'Welcome to KneeFit',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 40),
-
-                  // Connect to Brace button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ConnectToBraceScreen()),
-                      );
-                    },
-                    icon: const Icon(Icons.link),
-                    label: const Text('Connect to Brace'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor:
-                          Colors.blueAccent, // Blue theme for button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Exercises button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ExercisePage()),
-                      );
-                    },
-                    icon: const Icon(Icons.fitness_center),
-                    label: const Text('ExercisePage'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor:
-                          Colors.lightBlueAccent, // Blue theme for button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Health button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HealthStatisticsPage()),
-                      );
-                    },
-                    icon: const Icon(Icons.favorite),
-                    label: const Text('Health'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(
-                          255, 123, 242, 202), // Blue theme for button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Track Live Data button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LiveDataScreen()),
-                      );
-                    },
-                    icon: const Icon(Icons.data_usage),
-                    label: const Text('Track Live Data'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor:
-                          Colors.blueGrey, // Theme for the new button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Rehabilitation button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RehabilitationScreen()),
-                      );
-                    },
-                    icon: const Icon(Icons.fitness_center),
-                    label: const Text('Rehabilitation'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 114, 186),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Rehabilitation button
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CalendarPage()),
-                      );
-                    },
-                    icon: const Icon(Icons.calendar_today),
-                    label: const Text('Calendar'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 20),
-                      backgroundColor: const Color.fromARGB(255, 62, 149, 186),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fitness_center),
+            label: 'Rehabilitation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue, // Highlight color for the active tab
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
 }
 
-//qbit logo
+
+// HomeScreenContent (Separated Home Page Layout)
+class HomeScreenContent extends StatelessWidget {
+  const HomeScreenContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Background image
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/homescreen_background.jpeg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        // Page content with transparency
+        Container(
+          color: const Color.fromRGBO(0, 0, 0, 0.3),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'WELCOME TO KNEEFIT',
+                  style: TextStyles.maintitle,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 40),
+
+                // Connect to Brace button
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ConnectToBraceScreen()),
+                    );
+                  },
+                  icon: const Icon(Icons.link, color: Colors.white,),
+                  label: Text('Connect to Brace', style: TextStyles.button),
+                  style: _buttonStyle(Colors.blue),
+                ),
+                const SizedBox(height: 20),
+
+                // Track Live Data button
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LiveDataScreen()),
+                    );
+                  },
+                  icon: const Icon(Icons.data_usage, color: Colors.white),
+                  label: Text('Track Live Data', style: TextStyles.button),
+                  style: _buttonStyle(Colors.blue),
+                ),
+                const SizedBox(height: 20),
+
+                // Calendar button
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CalendarPage()),
+                    );
+                  },
+                  icon: const Icon(Icons.calendar_today,color: Colors.white),
+                  label: Text('Calendar', style: TextStyles.button),
+                  style: _buttonStyle(Colors.blue),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+// Define a common button style function
+ButtonStyle _buttonStyle(Color color) {
+  return ElevatedButton.styleFrom(
+    padding: const EdgeInsets.symmetric(vertical: 30), // Larger buttons
+    backgroundColor: color, // Dynamic button color
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15), // Rounded corners
+    ),
+    elevation: 5, // Shadow effect
+    textStyle: TextStyles.subheading,
+    minimumSize: const Size(300, 60),
+  );
+}
+
+// Logo Widget
 class LogoWidget extends StatelessWidget {
   const LogoWidget({super.key});
 
@@ -336,56 +284,9 @@ class LogoWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Image.asset(
         'assets/QbitLogo.jpeg',
-        height: 40, // Adjust the height of the logo as needed
+        height: 40,
         fit: BoxFit.contain,
       ),
-    );
-  }
-}
-
-//search bar function
-class CustomSearchDelegate extends SearchDelegate {
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: const Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
-      ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Center(
-      child: Text('Search result for "$query"'),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('Suggestion $index'),
-          onTap: () {
-            query = 'Suggestion $index';
-          },
-        );
-      },
     );
   }
 }

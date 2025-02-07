@@ -34,7 +34,6 @@ dependencies:
   # Bluetooth flutter package
   flutter_blue_plus: ^1.35.0
   get: ^4.6.6
-  flutter_bluetooth_serial: ^0.4.0
   bluetooth_classic: ^0.0.2
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +42,8 @@ dependencies:
 
   #calendar package
   table_calendar: ^3.0.8
+  google_fonts: ^6.2.1
+  
 
 
 dev_dependencies:
@@ -68,16 +69,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/background.jpeg
-    - assets/QbitLogo.jpeg
-    - assets/calfraises.jpg
-    - assets/halfsquats.jpg
-    - assets/hamstringcurls.jpg
-    - assets/heelcord.jpg
-    - assets/hipabduction.jpg
-    - assets/quadriceps.jpg
-    - assets/supinehamstring.jpg
-    - assets/emptyprofilepicture.png
+    - assets/images/homescreen_background.jpeg
+    - assets/images/QbitLogo.jpeg
+    - assets/images/emptyprofilepicture.png
+    - assets/images/rehabilitation_background.jpg
+    - assets/images/heeloverroll.png
 
   #  - images/background.jpeg
   # - images/a_dot_burr.jpeg
@@ -94,6 +90,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+     - family: Rubik
+       fonts:
+         - asset: assets/fonts/Rubik-VariableFont_wght.ttf
+     - family: Quicksand
+       fonts:
+         - asset: assets/fonts/Quicksand-VariableFont_wght.ttf
+     - family: Jost
+       fonts:
+         - asset: assets/fonts/Jost-VariableFont_wght.ttf
+
+  
   # fonts:
   #   - family: Schyler
   #     fonts:

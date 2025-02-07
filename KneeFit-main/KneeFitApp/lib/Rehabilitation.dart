@@ -1,200 +1,173 @@
 import 'package:flutter/material.dart';
+import 'styles/text_styles.dart';
+import 'CategoryScreen.dart';
+
+class Exercise {
+  final String name;
+  final String imagePath;
+  final String description;
+
+  Exercise({
+    required this.name,
+    required this.imagePath,
+    required this.description,
+  });
+}
+
 
 class RehabilitationScreen extends StatelessWidget {
   const RehabilitationScreen({super.key});
   
   @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Knee Rehabilitation Program'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.info_outline),
-              tooltip: 'Program Information',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProgramInfoScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-        body: ListView.builder(
-          itemCount: phases.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(phases[index], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ExerciseScreen(phase: phases[index]),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      );
-    }
-  }
-
-class ProgramInfoScreen extends StatelessWidget {
-  const ProgramInfoScreen({super.key});
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Program Information')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+    return Stack(
+      children: [
+        Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/rehabilitation_background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+        Container(
+          color: const Color.fromRGBO(0, 0, 0, 0.3),
+          child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Purpose of program:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+            const SizedBox(height: 20),
+            const Text(
+              'REHABILITATION',
+              style: TextStyles.title,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+
+            ...exercisesByPhase.keys.map((phase) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: phasesColors[phase] ?? Colors.grey,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryScreen(phase: phase),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    phase,
+                    textAlign: TextAlign.center,
+                    style: TextStyles.button,
+                  ),
+                ),
               ),
-              SizedBox(height: 10),
-              Text(
-                'Following an injury or surgery, a rehabilitation program will help you return to regular daily activities. '
-                'This program will help restore function, strength, and mobility to the knee. Overall, the goal is to promote '
-                'healing, rebuild strength, improve range of motion (ROM), and prevent future injury.',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Strength:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Building strength in the muscles that support your knee will help to alleviate stress on the joint. '
-                'Strong muscles allow your knee to absorb shock.',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Flexibility:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Stretching the muscles you strengthen is essential to regain range of motion and prevent injury. '
-                'Gentle stretching following strength exercises can reduce muscle soreness and maintain muscle length and flexibility.',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Target Muscles:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                '- Quadriceps\n- Hamstrings\n- Gluteus maximus\n- Calf\n- Tibialis anterior',
-                style: TextStyle(fontSize: 16),
-              ),
+            )).toList(),
             ],
           ),
         ),
       ),
+    ]
     );
   }
 }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Knee Rehabilitation Program')),
-//       body: ListView.builder(
-//         itemCount: phases.length,
-//         itemBuilder: (context, index) {
-//           return ListTile(
-//             title: Text(phases[index], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-//             trailing: const Icon(Icons.arrow_forward_ios),
-//             onTap: () {
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                   builder: (context) => ExerciseScreen(phase: phases[index]),
-//                 ),
-//               );
-//             },
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
+final Map<String, Color> phasesColors = {
+  "PHASE 1": const Color.fromARGB(255, 17, 155, 183),
+  "PHASE 2": const Color.fromARGB(255, 43, 164, 234),
+  "PHASE 3": const Color.fromARGB(255, 14, 85, 193),
+  "PHASE 4": const Color.fromARGB(255, 10, 18, 174),
+  "PHASE 5": const Color.fromARGB(255, 10, 4, 114),
+};
 
-// Define the phases for rehabilitation
-final List<String> phases = [
-  'Phase 1: Recovery from Surgery',
-  'Phase 2: Strength & Neuromuscular Control',
-  'Phase 3: Running, Agility & Landings',
-  'Phase 4: Return to Sport',
-  'Phase 5: Prevention of Re-injury'
-];
-
-class ExerciseScreen extends StatelessWidget {
-  final String phase;
-
-  ExerciseScreen({required this.phase});
-
-  final Map<String, List<Map<String, String>>> exercises = {
-    'Phase 1: Recovery from Surgery': [
-      {'name': 'Heel Slides', 'target': 'Quadriceps, Hamstrings, Hip Flexors', 'reps': '3 sets of 10', 'frequency': '5-7x a week'},
-      {'name': 'Quad Sets', 'target': 'Quadriceps', 'reps': '3 sets of 10', 'frequency': '5-7x a week'},
-      {'name': 'Straight Leg Raises', 'target': 'Quadriceps', 'reps': '3 sets of 10', 'frequency': '5-7x a week'},
-      {'name': 'Passive Knee Extension', 'target': 'Hamstrings, Calf', 'reps': 'Hold for 5-10 minutes', 'frequency': '5-7x a week'},
-      {'name': 'Ankle Pumps', 'target': 'Calf, Tibialis Anterior', 'reps': '3 sets of 10', 'frequency': '5-7x a week'},
+final Map<String, Map<String, List<Exercise>>> exercisesByPhase = {
+  'PHASE 1': {
+    'Range of Motion': [
+    Exercise(name: 'Heel Over Roll Stretch', imagePath: 'assets/images/heeloverroll.png', description: 'Muscles worked: Quadriceps, hamstrings, hip flexors.\nLie on your back with your legs straight. Using your affected leg, slide your heel up towards your bottom while keeping your heel on the floor. Slide your heel back down to the starting position.\nRepetitions: 3 sets of 10.\nFrequency: 5-7x a week .'),
+    Exercise(name: 'Heel Slides', imagePath: 'assets/images/heelslides.jpg', description: 'Muscles worked: Quadriceps, hamstrings, hip flexors.\nLie on your back with your legs straight. Using your affected leg, slide your heel up towards your bottom while keeping your heel on the floor. Slide your heel back down to the starting position.\nRepetitions: 3 sets of 10.\nFrequency: 5-7x a week .'),
+    Exercise(name: 'Knee Extension Isometric', imagePath: 'assets/images/heelslides.jpg', description: 'Muscles worked: Quadriceps, hamstrings, hip flexors.\nLie on your back with your legs straight. Using your affected leg, slide your heel up towards your bottom while keeping your heel on the floor. Slide your heel back down to the starting position.\nRepetitions: 3 sets of 10.\nFrequency: 5-7x a week .'),
     ],
-    'Phase 2: Strength & Neuromuscular Control': [
-      {'name': 'Mini Squats', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus', 'reps': '3 sets of 10', 'frequency': '3-5x a week'},
-      {'name': 'Calf Raises', 'target': 'Calf', 'reps': '3 sets of 10', 'frequency': '3-5x a week'},
-      {'name': 'Step-Ups', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus', 'reps': '3 sets of 10', 'frequency': '3-5x a week'},
-      {'name': 'Hamstring Curls', 'target': 'Hamstrings', 'reps': '3 sets of 10', 'frequency': '3-5x a week'},
+    'Strengthening':[
+    Exercise(name: 'Active Knee Flexion', imagePath: 'assets/images/quadsets.jpg', description: 'Quad sets exercise.'),   
+    Exercise(name: 'Seated Calf Raise', imagePath: 'assets/images/quadsets.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Hip Abduction', imagePath: 'assets/images/straightlegraises.jpg', description: ''),
+    Exercise(name: 'Hip Flexion Arom', imagePath: 'assets/images/passivekneeextension.jpg', description: ''), 
     ],
-    'Phase 3: Running, Agility & Landings': [
-      {'name': 'Ladder Drills', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus, Calf, Tibialis Anterior', 'reps': '3-5x each pattern', 'frequency': '2-3x a week'},
-      {'name': 'Acceleration & Deceleration', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus, Calf', 'reps': '3-5x', 'frequency': '2-3x a week'},
-      {'name': 'Jumping', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus, Calf', 'reps': '3 sets of 10', 'frequency': '2-3x a week'},
-      {'name': 'Single Leg Squat', 'target': 'Quadriceps, Hamstring, Gluteus Maximus', 'reps': '3 sets of 10', 'frequency': '2-3x a week'},
+},
+  'PHASE 2': {
+    'Range of Motion': [
+    Exercise(name: 'Prone Hangs', imagePath: 'assets/images/minisquats.jpg', description: 'Mini squats exercise.'),
+    Exercise(name: 'Wall Slides', imagePath: 'assets/images/minisquats.jpg', description: 'Mini squats exercise.'),
+    Exercise(name: 'Hamstrings Stretch', imagePath: 'assets/images/minisquats.jpg', description: 'Mini squats exercise.'),
+    Exercise(name: 'Gastroc Stretch With Towel', imagePath: 'assets/images/minisquats.jpg', description: 'Mini squats exercise.'),
+    Exercise(name: 'Standing Gastroc Stretch', imagePath: 'assets/images/minisquats.jpg', description: 'Mini squats exercise.'),
     ],
-    'Phase 4: Return to Sport': [
-      {'name': 'Sport-Specific Drills', 'target': 'Full body strength & endurance', 'reps': 'Varies', 'frequency': '2-3x a week'},
-      {'name': 'Functional Movement Tests', 'target': 'Leg symmetry & mobility', 'reps': 'Test-based', 'frequency': 'As required'},
+    'Strengthening':[
+    Exercise(name: 'Knee Extension Concentric', imagePath: 'assets/images/calfraises.jpg', description: 'Calf raises exercise.'),
+    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/hamstringcurls.jpg', description: ''), 
+    Exercise(name: 'Single Leg Squats', imagePath: 'assets/images/singlelegbalance.jpg', description: ''), 
+    Exercise(name: 'Hip Adduction', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Calf Raises', imagePath: 'assets/images/lunges.jpg', description: ''), 
     ],
-    'Phase 5: Prevention of Re-injury': [
-      {'name': 'Plyometrics', 'target': 'Quadriceps, Hamstrings, Gluteus Maximus', 'reps': '3 sets of 10', 'frequency': 'More than once a week'},
-      {'name': 'Balance & Strength Training', 'target': 'Lower body stabilization', 'reps': 'Varies', 'frequency': 'At least 6 weeks'},
+    'Balance':[
+    Exercise(name: 'One Leg Balance', imagePath: 'assets/images/onelegbalance.jpg', description: ''), 
     ],
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(phase)),
-      body: ListView.builder(
-        itemCount: exercises[phase]?.length ?? 0,
-        itemBuilder: (context, index) {
-          var exercise = exercises[phase]![index];
-          return Card(
-            margin: const EdgeInsets.all(10),
-            child: ListTile(
-              title: Text(exercise['name']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              subtitle: Text("Muscles: ${exercise['target']}\nReps: ${exercise['reps']}\nFrequency: ${exercise['frequency']}", style: const TextStyle(fontSize: 14)),
-              isThreeLine: true,
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-
+  },
+  'PHASE 3': {
+    'Strengthening':[
+    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/accelerlation.jpg', description: ''), 
+    Exercise(name: 'Squat', imagePath: 'assets/images/jumping.jpg', description: ''), 
+    Exercise(name: 'Set-Ups and Step-Downs', imagePath: 'assets/images/singlelegsquat.jpg', description: ''), 
+    Exercise(name: 'Bridging', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Single Leg Calf Raises', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Deadlift', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Knee Flexion Machine', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    ],
+    'Balance':[
+    Exercise(name: 'Wobble Board', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Single Leg Balance', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    Exercise(name: 'Airplane', imagePath: 'assets/images/stationarycycling.jpg', description: ''), 
+    
+    ],
+  },
+  'PHASE 4': {
+    'Cardio':[
+    Exercise(name: 'Jogging/Running', imagePath: 'assets/images/joggingrunning.jpg', description: 'Heel slide exercise.'),
+    Exercise(name: 'Skip Rope', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    ],
+    'Strengthening':[
+    Exercise(name: 'Runner Stepup', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Lunge', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Monster Walk', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    ],
+    'Balance':[
+    Exercise(name: 'Double Leg Wobble Board', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Single Leg Wobble Board', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Two-legged Squat Wobble Board', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Ball Toss Wobble Board', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    ],
+    'Agility':[
+    Exercise(name: 'Icky Shuffle', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Two Foot Hop Forward', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Forward Run', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Two Feet In & Out', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    
+    ],
+  },
+  'PHASE 5': {
+    'Final Steps':[
+    ],
+  },
+};
