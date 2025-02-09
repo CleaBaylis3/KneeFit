@@ -21,10 +21,10 @@ packages:
     dependency: "direct main"
     description:
       name: bluetooth_classic
-      sha256: ebb57bb0b8cb89f7a538f2cc7cb5576edbabaab4482d89876861c476ef7bfbc6
+      sha256: "42db30b681fc001f44f34c9c4ce8ea77ee0b88e9a83de14df29e37cb49493669"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   bluez:
     dependency: transitive
     description:
