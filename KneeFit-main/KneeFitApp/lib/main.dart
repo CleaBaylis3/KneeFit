@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'styles/text_styles.dart';
 
-import 'BlueTooth.dart';
+import 'Bluetooth/BlueTooth.dart';
 import 'Profile.dart';
 import 'Notifications.dart';
 import 'LiveData.dart';
