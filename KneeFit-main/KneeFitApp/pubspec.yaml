@@ -42,8 +42,6 @@ dependencies:
 
   #calendar package
   table_calendar: ^3.0.8
-  google_fonts: ^6.2.1
-  
 
 
 dev_dependencies:
