@@ -8,7 +8,7 @@ class BleController extends GetxController {
   StreamSubscription? _scanSubscription;
 
   final String targetDeviceName = "HMSoft";
-  final String targetDeviceId = "18:93:D7:01:24:2D";
+  final String targetDeviceId = "1893D701242D";
 
   Future<void> scanDevices() async {
     if (isScanning.value) return;

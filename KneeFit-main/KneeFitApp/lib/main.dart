@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KneeFit',
       theme: ThemeData(
-          appBarTheme: AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.black),
           titleTextStyle: TextStyles.title,
-          ),
+        ),
         //useMaterial3: true,
       ),
       home: const SplashScreen(),
@@ -77,43 +77,46 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // List of pages for navigation
   final List<Widget> _pages = [
-    const HomeScreenContent(),        // Home Page (Index 0)
-    const RehabilitationScreen(),     // Rehabilitation/Exercises Page (Index 1)
-    const ProfilePage(),              // Profile Page (Index 2)
+    const HomeScreenContent(), // Home Page (Index 0)
+    const RehabilitationScreen(), // Rehabilitation/Exercises Page (Index 1)
+    const ProfilePage(), // Profile Page (Index 2)
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: _selectedIndex == 1 ? Colors.white : const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: _selectedIndex == 1
+            ? Colors.white
+            : const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         centerTitle: true,
         actions: _selectedIndex == 1
-            ? [ 
+            ? [
                 IconButton(
                   icon: const Icon(Icons.info_outline, color: Colors.black),
                   tooltip: 'Program Information',
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ProgramInfoScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const ProgramInfoScreen()),
                     );
                   },
                 ),
               ]
-            : [ 
+            : [
                 Stack(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.notifications, color: Colors.white),
+                      icon:
+                          const Icon(Icons.notifications, color: Colors.white),
                       tooltip: 'Notifications',
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const NotificationsPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const NotificationsPage()),
                         );
                       },
                     ),
@@ -145,8 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
       ),
-      body: _pages[_selectedIndex], 
-
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -173,7 +175,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
 
 // HomeScreenContent (Separated Home Page Layout)
 class HomeScreenContent extends StatelessWidget {
@@ -216,7 +217,10 @@ class HomeScreenContent extends StatelessWidget {
                           builder: (context) => const ConnectToBraceScreen()),
                     );
                   },
-                  icon: const Icon(Icons.link, color: Colors.white,),
+                  icon: const Icon(
+                    Icons.link,
+                    color: Colors.white,
+                  ),
                   label: Text('Connect to Brace', style: TextStyles.button),
                   style: _buttonStyle(Colors.blue),
                 ),
@@ -246,7 +250,7 @@ class HomeScreenContent extends StatelessWidget {
                           builder: (context) => const CalendarPage()),
                     );
                   },
-                  icon: const Icon(Icons.calendar_today,color: Colors.white),
+                  icon: const Icon(Icons.calendar_today, color: Colors.white),
                   label: Text('Calendar', style: TextStyles.button),
                   style: _buttonStyle(Colors.blue),
                 ),
@@ -258,7 +262,6 @@ class HomeScreenContent extends StatelessWidget {
     );
   }
 }
-
 
 // Define a common button style function
 ButtonStyle _buttonStyle(Color color) {
