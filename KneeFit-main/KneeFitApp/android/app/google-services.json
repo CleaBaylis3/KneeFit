@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387804831222",
+    "project_id": "kneefit-app",
+    "storage_bucket": "kneefit-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387804831222:android:0ec0c5a50f39d37541fbd7",
+        "android_client_info": {
+          "package_name": "com.qbit.kneefit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgJr_4YgBnx2vlUZrVsVxkB2drhXnl6_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

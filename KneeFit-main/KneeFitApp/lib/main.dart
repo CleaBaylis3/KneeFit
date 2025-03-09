@@ -8,9 +8,88 @@ import 'LiveData.dart';
 import 'Rehabilitation.dart';
 import 'CalendarPage.dart';
 import 'ProgramInfoScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'firebase_options.dart';
+import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+   runApp(MyApp());
+}
+
+final databaseRef = FirebaseDatabase.instance.ref("knee_brace");
+
+void sendKneeBraceData(double flexAngle, double pressure) {
+  databaseRef.push().set({
+    "flexAngle": flexAngle,
+    "pressure": pressure,
+    "timestamp": DateTime.now().millisecondsSinceEpoch
+  });
+}
+
+class RealTimeChart extends StatefulWidget {
+  @override
+  _RealTimeChartState createState() => _RealTimeChartState();
+}
+
+class _RealTimeChartState extends State<RealTimeChart> {
+  final databaseRef = FirebaseDatabase.instance.ref("knee_brace");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Real-Time Knee Brace Data")),
+      body: StreamBuilder(
+        stream: databaseRef.onValue,
+        builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
+          if (!snapshot.hasData || snapshot.data!.snapshot.value == null) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          List<dynamic> kneeData = [];
+          Map<dynamic, dynamic> values = snapshot.data!.snapshot.value as Map;
+          values.forEach((key, value) {
+            kneeData.add(value);
+          });
+
+          return LineChartWidget(kneeData);
+        },
+      ),
+    );
+  }
+}
+
+class LineChartWidget extends StatelessWidget {
+  final List<dynamic> kneeData;
+  LineChartWidget(this.kneeData);
+
+  @override
+  Widget build(BuildContext context) {
+    return LineChart(
+      LineChartData(
+        gridData: FlGridData(show: true),
+        titlesData: FlTitlesData(show: true),
+        borderData: FlBorderData(show: true),
+        lineBarsData: [
+          LineChartBarData(
+            spots: kneeData.map((data) => FlSpot(
+              (data['timestamp'] % 1000000).toDouble(), // X-axis: Time
+              data['flexAngle'].toDouble(), // Y-axis: Flex Angle
+            )).toList(),
+            isCurved: true,
+            color: Colors.blue,
+            barWidth: 4,
+            isStrokeCapRound: true,
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
