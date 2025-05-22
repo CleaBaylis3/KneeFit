@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "387804831222",
-    "project_id": "kneefit-app",
-    "storage_bucket": "kneefit-app.firebasestorage.app"
+    "project_number": "928148205346",
+    "firebase_url": "https://esp32-frebase-demo-63bff-default-rtdb.firebaseio.com",
+    "project_id": "esp32-frebase-demo-63bff",
+    "storage_bucket": "esp32-frebase-demo-63bff.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:387804831222:android:0ec0c5a50f39d37541fbd7",
+        "mobilesdk_app_id": "1:928148205346:android:9b728e05a498467517ff7b",
         "android_client_info": {
           "package_name": "com.qbit.kneefit"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDgJr_4YgBnx2vlUZrVsVxkB2drhXnl6_4"
+          "current_key": "AIzaSyBLr61Co5M3OH0NYvboJj_UCaPMMUqCs9g"
         }
       ],
       "services": {
