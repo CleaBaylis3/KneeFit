@@ -102,68 +102,64 @@ final Map<String, Map<String, List<Exercise>>> exercisesByPhase = {
     'Strengthening':[
     Exercise(name: 'Active Knee Flexion', imagePath: 'assets/images/activekneeflexion.jpg', description: 'Quad sets exercise.'),   
     Exercise(name: 'Seated Calf Raise', imagePath: 'assets/images/seatedcalfraise.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Hip Abduction', imagePath: 'assets/images/hipabduction.jpg', description: ''),
-    Exercise(name: 'Hip Flexion Arom', imagePath: 'assets/images/hipflexionarom.jpg', description: ''), 
+    Exercise(name: 'Hip Abduction', imagePath: 'assets/images/hipadduction.png', description: ''),
+    Exercise(name: 'Hip Flexion', imagePath: 'assets/images/hipflexion.png', description: ''), 
     ],
 },
   'PHASE 2': {
     'Range of Motion': [
     Exercise(name: 'Prone Hangs', imagePath: 'assets/images/pronehangs.jpg', description: 'Mini squats exercise.'),
-    Exercise(name: 'Wall Slides', imagePath: 'assets/images/wallslides.jpg', description: 'Mini squats exercise.'),
     Exercise(name: 'Hamstring Stretch', imagePath: 'assets/images/hamstringstretch.jpg', description: 'Mini squats exercise.'),
     Exercise(name: 'Gastroc Stretch With Towel', imagePath: 'assets/images/gastrocstretchwithtowel.jpg', description: 'Mini squats exercise.'),
     Exercise(name: 'Standing Gastroc Stretch', imagePath: 'assets/images/standinggastrocstretch.jpg', description: 'Mini squats exercise.'),
     ],
     'Strengthening':[
-    Exercise(name: 'Knee Extension Concentric', imagePath: 'assets/images/kneeextensionconcentric.jpg', description: 'Calf raises exercise.'),
-    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/hamstringcurls.jpg', description: ''), 
-    Exercise(name: 'Single Leg Squats', imagePath: 'assets/images/singlelegsquats.jpg', description: ''), 
-    Exercise(name: 'Hip Adduction', imagePath: 'assets/images/hipadduction.jpg', description: ''), 
-    Exercise(name: 'Calf Raises', imagePath: 'assets/images/calfraises.jpg', description: ''), 
+    Exercise(name: 'Knee Extension Concentric', imagePath: 'assets/images/kneeextensionconcentric.png', description: 'Calf raises exercise.'),
+    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/hamstringcurls.jpeg', description: ''), 
+    Exercise(name: 'Single Leg Squats', imagePath: 'assets/images/singlelegsquats.png', description: ''), 
+    Exercise(name: 'Hip Adduction', imagePath: 'assets/images/hipadduction.png', description: ''), 
+    Exercise(name: 'Calf Raises', imagePath: 'assets/images/calfraises.jpeg', description: ''), 
     ],
     'Balance':[
-    Exercise(name: 'One Leg Balance', imagePath: 'assets/images/onelegbalance.jpg', description: ''), 
+    Exercise(name: 'One Leg Balance', imagePath: 'assets/images/singlelegbalance.jpg', description: ''), 
     ],
   },
   'PHASE 3': {
     'Strengthening':[
-    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/hamstringcurls.jpg', description: ''), 
-    Exercise(name: 'Squat', imagePath: 'assets/images/squat.jpg', description: ''), 
-    Exercise(name: 'Set-Ups and Step-Downs', imagePath: 'assets/images/stepups.jpg', description: ''), 
-    Exercise(name: 'Bridging', imagePath: 'assets/images/bridging.jpg', description: ''), 
-    Exercise(name: 'Single Leg Calf Raises', imagePath: 'assets/images/singlelegcalfraises.jpg', description: ''), 
-    Exercise(name: 'Deadlift', imagePath: 'assets/images/deadlift.jpg', description: ''), 
-    Exercise(name: 'Knee Flexion Machine', imagePath: 'assets/images/kneeflexionmachine.jpg', description: ''), 
+    Exercise(name: 'Hamstring Curls', imagePath: 'assets/images/hamstringcurls.jpeg', description: ''), 
+    Exercise(name: 'Squat', imagePath: 'assets/images/squat.png', description: ''), 
+    Exercise(name: 'Set-Ups and Step-Downs', imagePath: 'assets/images/stepups.png', description: ''), 
+    Exercise(name: 'Bridging', imagePath: 'assets/images/bridging.png', description: ''), 
+    Exercise(name: 'Single Leg Calf Raises', imagePath: 'assets/images/singlelegcalfraises.png', description: ''), 
+    Exercise(name: 'Deadlift', imagePath: 'assets/images/deadlift.png', description: ''), 
     ],
     'Balance':[
-    Exercise(name: 'Wobble Board', imagePath: 'assets/images/wobbleboard.jpg', description: ''), 
+    Exercise(name: 'Wobble Board', imagePath: 'assets/images/wobbleboard.png', description: ''), 
     Exercise(name: 'Single Leg Balance', imagePath: 'assets/images/singlelegbalance.jpg', description: ''), 
-    Exercise(name: 'Airplane', imagePath: 'assets/images/airplane.jpg', description: ''), 
+    Exercise(name: 'Airplane', imagePath: 'assets/images/airplane.png', description: ''), 
     
     ],
   },
   'PHASE 4': {
     'Cardio':[
-    Exercise(name: 'Jogging/Running', imagePath: 'assets/images/joggingrunning.jpg', description: 'Heel slide exercise.'),
-    Exercise(name: 'Skip Rope', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Jogging/Running', imagePath: 'assets/images/running.png', description: 'Heel slide exercise.'),
+    Exercise(name: 'Skip Rope', imagePath: 'assets/images/skiprope.png', description: 'Quad sets exercise.'),
     ],
     'Strengthening':[
-    Exercise(name: 'Runner Stepup', imagePath: 'assets/images/runningstepup.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Runner Stepup', imagePath: 'assets/images/stepups.png', description: 'Quad sets exercise.'),
     Exercise(name: 'Lunge', imagePath: 'assets/images/lunges.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Monster Walk', imagePath: 'assets/images/monsterwalk.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Monster Walk', imagePath: 'assets/images/monsterwalk.png', description: 'Quad sets exercise.'),
     ],
     'Balance':[
-    Exercise(name: 'Double Leg Wobble Board', imagePath: 'assets/images/wobbleboard.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Single Leg Wobble Board', imagePath: 'assets/images/singlelegwobbleboard.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Two-legged Squat Wobble Board', imagePath: 'assets/images/squatwobbleboard.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Ball Toss Wobble Board', imagePath: 'assets/images/ballwobbleboard.jpg', description: 'Quad sets exercise.'),
+    Exercise(name: 'Double Leg Wobble Board', imagePath: 'assets/images/wobbleboard.png', description: 'Quad sets exercise.'),
+    Exercise(name: 'Single Leg Wobble Board', imagePath: 'assets/images/singlelegwobbleboard.png', description: 'Quad sets exercise.'),
+    Exercise(name: 'Two-legged Squat Wobble Board', imagePath: 'assets/images/squatwobbleboard.png', description: 'Quad sets exercise.'),
+    Exercise(name: 'Ball Toss Wobble Board', imagePath: 'assets/images/ballwobbleboard.png', description: 'Quad sets exercise.'),
     ],
     'Agility':[
-    Exercise(name: 'Icky Shuffle', imagePath: 'assets/images/ickyshuffle.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Two Foot Hop Forward', imagePath: 'assets/images/skiprope.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Forward Run', imagePath: 'assets/images/run.jpg', description: 'Quad sets exercise.'),
-    Exercise(name: 'Two Feet In & Out', imagePath: 'assets/images/inout.jpg', description: 'Quad sets exercise.'),
-    
+    Exercise(name: 'Jump rope', imagePath: 'assets/images/jumprope.png', description: 'Quad sets exercise.'),
+    Exercise(name: 'Run', imagePath: 'assets/images/running.png', description: 'Quad sets exercise.'),
+    Exercise(name: 'Agility ladder', imagePath: 'assets/images/agilityladder.png', description: 'Quad sets exercise.'),
     ],
   },
   'PHASE 5': {
@@ -171,3 +167,5 @@ final Map<String, Map<String, List<Exercise>>> exercisesByPhase = {
     ],
   },
 };
+
+

@@ -76,60 +76,48 @@ flutter:
     - assets/images/QbitLogo.jpeg
     - assets/images/emptyprofilepicture.png
     - assets/images/rehabilitation_background.jpg
-    - assets/images/heeloverroll.png
-    - assets/images/calfraises.jpeg
     - assets/images/halfsquats.jpeg
-    - assets/images/hamstringcurls.jpeg
     - assets/images/heelcord.jpeg
-    - assets/images/hipabduction.jpeg
-    - assets/images/passivekneeextension.jpg
     - assets/images/quadriceps.jpeg
     - assets/images/straightlegraises.jpg
     - assets/images/supinehamstring.jpeg
-    - assets/images/heelslides.jpg
     - assets/images/minisquats.jpg
-    - assets/images/singlelegbalance.jpg
     - assets/images/stationarycycling.jpg
-    - assets/images/lunges.jpg
+  
 
-    # - assets/images/heeloverroll.jpg
-    # - assets/images/heelslides.jpg
-    # - assets/images/passivekneeextension.jpg
-    # - assets/images/activekneeflexion.jpg
-    # - assets/images/seatedcalfraise.jpg
-    # - assets/images/hipabduction.jpg
-    # - assets/images/hipflexionarom.jpg
-    # - assets/images/pronehangs.jpg
-    # - assets/images/wallslides.jpg
-    # - assets/images/hamstringstretch.jpg
-    # - assets/images/gastrocstretchwithtowel.jpg
-    # - assets/images/standinggastrocstretch.jpg
-    # - assets/images/kneeextensionconcentric.jpg
-    # - assets/images/hamstringcurls.jpg
-    # - assets/images/singlelegsquats.jpg
-    # - assets/images/hipadduction.jpg
-    # - assets/images/calfraises.jpg
-    # - assets/images/onelegbalance.jpg
-    # - assets/images/squat.jpg
-    # - assets/images/stepups.jpg
-    # - assets/images/bridging.jpg
-    # - assets/images/singlelegcalfraises.jpg
-    # - assets/images/deadlift.jpg
-    # - assets/images/kneeflexionmachine.jpg
-    # - assets/images/wobbleboard.jpg
-    # - assets/images/singlelegbalance.jpg
-    # - assets/images/airplane.jpg
-    # - assets/images/joggingrunning.jpg
-    # - assets/images/skiprope.jpg
-    # - assets/images/runningstepup.jpg
-    # - assets/images/lunges.jpg
-    # - assets/images/monsterwalk.jpg
-    # - assets/images/singlelegwobbleboard.jpg
-    # - assets/images/squatwobbleboard.jpg
-    # - assets/images/ballwobbleboard.jpg
-    # - assets/images/ickyshuffle.jpg
-    # - assets/images/run.jpg
-    # - assets/images/inout.jpg
+    - assets/images/heeloverroll.png
+    - assets/images/heelslides.jpg
+    - assets/images/passivekneeextension.jpg
+    - assets/images/activekneeflexion.jpg
+    - assets/images/seatedcalfraise.jpg
+    - assets/images/hipadduction.png
+    - assets/images/hipflexion.png
+    - assets/images/pronehangs.jpg
+    - assets/images/hamstringstretch.jpg
+    - assets/images/gastrocstretchwithtowel.jpg
+    - assets/images/standinggastrocstretch.jpg
+    - assets/images/kneeextensionconcentric.png
+    - assets/images/hamstringcurls.jpeg
+    - assets/images/singlelegsquats.png
+    - assets/images/hipadduction.png
+    - assets/images/calfraises.jpeg
+    - assets/images/squat.png
+    - assets/images/stepups.png
+    - assets/images/bridging.png
+    - assets/images/singlelegcalfraises.png
+    - assets/images/deadlift.png
+    - assets/images/wobbleboard.png
+    - assets/images/singlelegbalance.jpg
+    - assets/images/airplane.png
+    - assets/images/running.png
+    - assets/images/skiprope.png
+    - assets/images/lunges.jpg
+    - assets/images/monsterwalk.png
+    - assets/images/singlelegwobbleboard.png
+    - assets/images/squatwobbleboard.png
+    - assets/images/ballwobbleboard.png
+    - assets/images/jumprope.png
+    - assets/images/agilityladder.png
 
 
   # I have to add find images als oreview the recovery plan 
